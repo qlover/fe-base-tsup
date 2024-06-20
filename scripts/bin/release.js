@@ -21,6 +21,18 @@ function main() {
     `echo "//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}" > .npmrc`
   );
 
+  // 确保设置了上游分支
+  try {
+    const branchName = execSync('git rev-parse --abbrev-ref HEAD')
+      .toString()
+      .trim();
+    console.log(`Current branch is ${branchName}`);
+    runCommand(`git push --set-upstream origin ${branchName}`);
+  } catch (error) {
+    console.error('Failed to set upstream branch.');
+    process.exit(1);
+  }
+
   console.log('Publishing to npm and GitHub...');
   runCommand('npx release-it --ci', {
     env: {

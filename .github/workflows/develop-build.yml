@@ -23,8 +23,8 @@ jobs:
       with:
         node-version: '18.18.0'
 
-    # - name: Install dependencies
-    #   run: 
+    - name: Install dependencies
+      run: yarn install
 
     - name: Show Var
       run: npm run release

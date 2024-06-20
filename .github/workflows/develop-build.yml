@@ -15,6 +15,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+          fetch-depth: 0
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -27,13 +29,13 @@ jobs:
     - name: Build project
       run: yarn build
     
-    - name: Publish to npm and GitHub
+    - name: git config
       run: |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
-        git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
-        npm run release
+        git config user.name "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
+    - name: Publish to npm and GitHub
+      run: npm run release
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

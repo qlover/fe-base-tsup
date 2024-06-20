@@ -17,7 +17,7 @@ const commonConfig: Options = {
 
 export default defineConfig([
   {
-    format: ['esm', 'iife'],
+    format: ['esm', 'cjs'],
     entry: ['./packages/main/index.ts'],
     outDir: 'dist/main',
     platform: 'neutral',

@@ -1,9 +1,20 @@
 {
   "name": "fe-base-tsup",
   "version": "1.0.1",
-  "description": "",
+  "description": "fe base tsup builder",
   "type": "module",
   "private": true,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "workspaces": [
     "packages/*"
   ],

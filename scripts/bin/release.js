@@ -13,7 +13,6 @@ function runCommand(command, options = {}) {
 function main() {
   loadEnv();
 
-  // 设置 npm 认证令牌
   if (!process.env.NPM_TOKEN) {
     console.error('NPM_TOKEN environment variable is not set.');
     process.exit(1);
@@ -22,7 +21,6 @@ function main() {
     `echo "//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}" > .npmrc`
   );
 
-  // 发布到 npm 和 GitHub
   console.log('Publishing to npm and GitHub...');
   runCommand('npx release-it --ci', {
     env: {

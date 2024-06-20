@@ -25,7 +25,6 @@ function main() {
     console.error('PAT environment variable is not set.');
     process.exit(1);
   }
-  process.exit(1);
 
   // runCommand(
   //   `echo "//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}" > .npmrc`
@@ -44,13 +43,13 @@ function main() {
   //   process.exit(1);
   // }
 
-  // console.log('Publishing to npm and GitHub...');
-  // runCommand('npx release-it --ci', {
-  //   env: {
-  //     ...process.env,
-  //     NPM_TOKEN: process.env.NPM_TOKEN
-  //   }
-  // });
+  console.log('Publishing to npm and GitHub...');
+  runCommand('npx release-it --ci', {
+    env: {
+      ...process.env,
+      NPM_TOKEN: process.env.NPM_TOKEN
+    }
+  });
 }
 
 main();

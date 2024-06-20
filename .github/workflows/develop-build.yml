@@ -1,17 +1,17 @@
 name: Develop Build Task
 
 on:
-  push:
-    branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+  # push:
+  #   branches:
+  #     - develop
+  # pull_request:
+  #   branches:
+  #     - develop
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    if: "contains(github.event.head_commit.message, '[skip ci]') == false"
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -26,26 +26,26 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: Show Var
-      run: npm run release
+    - name: Build
+      run: yarn build
+
+    - name: release
+      run: npx release-it
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         PAT: ${{ secrets.PAT }}
-    
-    # - name: git config
-    #   run: |
-    #     git config --global user.name "${GITHUB_ACTOR}"
-    #     git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-    # - name: to npm config
-    #   run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-    #   env: 
-    #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  
 
-    # - name: Run release
-    #   run: npm run release
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.PAT }}
-    #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    #     PAT: ${{ secrets.PAT }}
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m "[skip ci] skip ci Apply CI changes"
+        git push origin ${{ github.head_ref }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    
+    
 

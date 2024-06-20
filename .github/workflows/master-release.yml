@@ -1,4 +1,4 @@
-name: Build Task
+name: Master Build and Relese Task
 
 on:
   push:

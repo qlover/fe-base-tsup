@@ -20,9 +20,6 @@
     "README.md",
     "package.json"
   ],
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "build": "gulp build",
     "format": "gulp format",

@@ -27,10 +27,7 @@ jobs:
     #   run: 
 
     - name: Show Var
-      run: |
-        echo $NPM_TOKEN
-        echo $GITHUB_TOKEN
-        echo $PAT
+      run: npm run release
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

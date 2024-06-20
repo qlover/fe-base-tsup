@@ -1,6 +1,6 @@
 {
   "name": "fe-base-tsup",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "fe base tsup builder",
   "type": "module",
   "private": true,

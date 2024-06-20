@@ -1,5 +1,12 @@
 
 
+## [1.0.3](https://github.com/qlover/fe-base-tsup/compare/1.0.2...1.0.3) (2024-06-20)
+
+
+### Bug Fixes
+
+* **.release-it:** open publish ([93328db](https://github.com/qlover/fe-base-tsup/commit/93328db0438d51ac58fdff4060ff7e94e921f643))
+
 ## [1.0.2](https://github.com/qlover/fe-base-tsup/compare/1.0.1...1.0.2) (2024-06-20)
 
 

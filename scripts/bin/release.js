@@ -23,6 +23,7 @@ function main() {
 
   // 确保设置了上游分支
   try {
+    console.log('git branch -a');
     const branchName = execSync('git rev-parse --abbrev-ref HEAD')
       .toString()
       .trim();

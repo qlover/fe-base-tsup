@@ -23,6 +23,9 @@ jobs:
       with:
         node-version: '18.18.0'
 
+    - name: Authenticate with npm
+      run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+
     - name: Install dependencies
       run: yarn install
 

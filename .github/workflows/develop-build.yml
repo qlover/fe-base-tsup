@@ -32,14 +32,14 @@ jobs:
         git fetch --all
         git checkout ${{ github.event.pull_request.head.ref }}
 
-    - name: Authenticate with npm
-      run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+    # - name: Authenticate with npm
+    #   run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
 
-    - name: Install dependencies
-      run: yarn install
+    # - name: Install dependencies
+    #   run: yarn install
 
-    - name: Build
-      run: yarn build
+    # - name: Build
+    #   run: yarn build
 
     - name: test git push
       run: echo 'skip ci' > skip.ci.text
@@ -47,9 +47,9 @@ jobs:
     # - name: release
     #   run: npm run release
     #   env:
-    #     GITHUB_TOKEN: ${{ secrets.PAT }}
+    #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
     #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    #     PAT: ${{ secrets.PAT }}
+    #     PAT: ${{ secrets.PAT_TOKEN }}
 
     - name: Commit and push changes
       run: |
@@ -57,7 +57,7 @@ jobs:
         git commit -m "[skip ci] skip ci Apply CI changes"
         git push origin ${{ github.head_ref }}
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT }}
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
     
     

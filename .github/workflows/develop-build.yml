@@ -36,7 +36,7 @@ jobs:
         git commit -m "[skip ci] skip ci Apply CI changes"
         git remote set-url origin https://qlover:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
         git remote -v
-        git push origin ${{ github.head_ref }}
+        git push
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 

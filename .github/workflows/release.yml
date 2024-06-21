@@ -1,9 +1,8 @@
-name: FE develop Release
+name: FE master Release
 on:
   push:
     branches:
-      # !!! develop not support npm release
-      - develop
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,12 +26,12 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
         # Workflow permissions 记得在仓库 setting 打开, Actions -> general -> Workflow permissions -> Read and write permissions
         # release 时会创建一个 commit 然后向分支提交,但是master是被保护的,目前用的 pat 提交绕过的这个权限
-        # - name: Publishing to NPM and GitHub
-        #   run: npm run release
-        #   env:
-        #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN}}
-        #     NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
-        #     PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      - name: Publishing to NPM and GitHub
+        run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
     # 下面是单独需要 push 代码时用到的配置
     # - name: Commit New Version Change
     #   run: |

@@ -1,9 +1,9 @@
 {
   "name": "@qlover/fe-base-tsup",
-  "version": "1.0.1",
+  "version": "1.0.10",
   "description": "fe base tsup builder",
   "type": "module",
-  "private": true,
+  "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -15,9 +15,6 @@
     },
     "./package.json": "./package.json"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "build": "gulp build",
     "format": "gulp format",

@@ -29,11 +29,12 @@ jobs:
 
     - name: Commit and push changes
       run: |
+        echo "branch is: ${{github.head_ref}}"
         echo "https://qlover:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git"
         echo 'skip ci' > skip.ci.text
         git add .
         git commit -m "[skip ci] skip ci Apply CI changes"
-        git remote set-url origin https://qlover:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
+        git remote set-url origin https://qlover:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
         git remote -v
         git push origin ${{ github.head_ref }}
       env:

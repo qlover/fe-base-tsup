@@ -24,7 +24,7 @@ jobs:
       - name: Publishing to NPM and GitHub
         run: npm run release
         env:
-          PAT_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN}}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
       - name: Commit New Version Change
         run: |

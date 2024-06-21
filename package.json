@@ -1,5 +1,5 @@
 {
-  "name": "fe-base-tsup",
+  "name": "@qlover/fe-base-tsup",
   "version": "1.0.1",
   "description": "fe base tsup builder",
   "type": "module",
@@ -28,7 +28,7 @@
     "lint": "eslint packages --ext .js,.ts --cache --fix",
     "setup:husky": "node scripts/bin/setupHusky",
     "commit": "node ./scripts/bin/commit.js",
-    "release": "release-it",
+    "release": "node ./scripts/bin/release.js",
     "ts-run": "node ./scripts/bin/ts-run.js",
     "test": "jest"
   },

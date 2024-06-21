@@ -1,5 +1,16 @@
 
 
+## [1.0.13](https://github.com/qlover/fe-base-tsup/compare/1.0.6...1.0.13) (2024-06-21)
+
+
+### Bug Fixes
+
+* **build.yml:** install ([b6e0908](https://github.com/qlover/fe-base-tsup/commit/b6e0908d1ecb62228b890b5ebcbad78b2b9d4772))
+* **build.yml:** PAT ([fed874b](https://github.com/qlover/fe-base-tsup/commit/fed874bacf43e7e5a06dcbdf0c3168a642f2d388))
+* **build.yml:** PAT ([35ec0db](https://github.com/qlover/fe-base-tsup/commit/35ec0dbb939cac21944597baa52e99e4e0aa406b))
+* **build.yml:** PAT ([dd2a0e6](https://github.com/qlover/fe-base-tsup/commit/dd2a0e641cebf62f2771148e279a300f5b2e728d))
+* **build.yml:** PAT ([204eac2](https://github.com/qlover/fe-base-tsup/commit/204eac2bb3b12adda6a48ef5683aca1a1383eae3))
+
 ## [1.0.6](https://github.com/qlover/fe-base-tsup/compare/1.0.5...1.0.6) (2024-06-20)
 
 ## [1.0.5](https://github.com/qlover/fe-base-tsup/compare/1.0.4...1.0.5) (2024-06-20)

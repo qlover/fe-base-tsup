@@ -23,6 +23,10 @@ jobs:
         run: yarn install
       - name: Build dist
         run: yarn build
+      - name: Config Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
       - name: Publishing to NPM and GitHub
         run: npm run release
         env:
@@ -31,8 +35,6 @@ jobs:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       - name: Commit New Version Change
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git fetch --all
           git checkout ${{ github.event.pull_request.head.ref }}
           git add .

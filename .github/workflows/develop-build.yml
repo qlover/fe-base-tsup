@@ -30,6 +30,9 @@ jobs:
     #   with:
     #     node-version: '18.18.0'
 
+    - name: check ssh
+      - run: ls -al ~/.ssh
+
     - name: Set up Git
       run: |
         git config --global user.name "github-actions[bot]"

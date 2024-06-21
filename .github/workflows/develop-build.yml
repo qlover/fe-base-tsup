@@ -59,6 +59,7 @@ jobs:
     - name: Commit and push changes
       run: |
         echo "https://x-access-token:${ACTIONS_DEPLOY_KEY}@github.com/${{ github.repository }}.git"
+        git remote -v
         git add .
         git commit -m "[skip ci] skip ci Apply CI changes"
         git remote set-url origin https://x-access-token:${ACTIONS_DEPLOY_KEY}@github.com/${{ github.repository }}.git

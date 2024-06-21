@@ -1,5 +1,4 @@
 name: Develop Build Task
-
 on:
   # push:
   #   branches:
@@ -7,40 +6,36 @@ on:
   pull_request:
     branches:
       - test-ci
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '[skip ci]') == false"
+    if: "contains(github.event.head_commit.message, '[From bot]') == false"
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        ref: ${{ github.event.pull_request.head.ref }}
-        repository: ${{ github.event.pull_request.head.repo.full_name }}
-
-    - name: Set up Git
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git fetch --all
-        git checkout ${{ github.event.pull_request.head.ref }}
-
-    - name: Commit and push changes
-      run: |
-        echo "branch is: ${{github.head_ref}}"
-        echo "https://qlover:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git"
-        echo 'skip ci' > skip.ci.text
-        git add .
-        git commit -m "[skip ci] skip ci Apply CI changes"
-        git remote set-url origin https://qlover:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
-        git remote -v
-        git push
-      env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-
-
-    
-    
-
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Build dist
+        run: yarn build
+      - name: Publishing to NPM and GitHub
+        run: npm run release
+        env:
+          PAT_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN}}
+      - name: Commit New Version Change
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout ${{ github.event.pull_request.head.ref }}
+          git add .
+          git commit -m "[From bot] Apply CI changes"
+          git remote set-url origin https://qlover:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
+          git remote -v
+          git push
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

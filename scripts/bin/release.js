@@ -21,14 +21,10 @@ function main() {
     console.error('GITHUB_TOKEN environment variable is not set.');
     process.exit(1);
   }
-  if (!process.env.PAT) {
-    console.error('PAT environment variable is not set.');
-    process.exit(1);
-  }
 
-  // runCommand(
-  //   `echo "//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}" > .npmrc`
-  // );
+  runCommand(
+    `echo "//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}" > .npmrc`
+  );
 
   // // 确保设置了上游分支
   // try {
@@ -43,7 +39,7 @@ function main() {
   //   process.exit(1);
   // }
 
-  console.log('Publishing to npm and GitHub...');
+  console.log('Publishing to NPM and GitHub...');
   runCommand('npx release-it --ci', {
     env: {
       ...process.env,

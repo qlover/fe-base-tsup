@@ -1,6 +1,6 @@
 {
   "name": "@qlover/test-fe-base-tsup",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "fe base tsup builder",
   "type": "module",
   "private": false,

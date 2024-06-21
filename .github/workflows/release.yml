@@ -1,7 +1,8 @@
-name: FE Release
+name: FE master Release
 on:
   push:
     branches:
+      # !!! develop not support release
       - master
 jobs:
   build:

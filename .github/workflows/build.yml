@@ -1,8 +1,8 @@
-name: FE Develop Build
+name: FE Master Build
 on:
   pull_request:
     branches:
-      - develop
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest

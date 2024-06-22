@@ -1,5 +1,7 @@
 
 
+## [1.1.10](https://github.com/qlover/fe-base-tsup/compare/1.1.9...1.1.10) (2024-06-22)
+
 ## [1.1.9](https://github.com/qlover/fe-base-tsup/compare/1.1.7...1.1.9) (2024-06-22)
 
 ## [1.1.7](https://github.com/qlover/fe-base-tsup/compare/1.0.1...1.1.7) (2024-06-22)
